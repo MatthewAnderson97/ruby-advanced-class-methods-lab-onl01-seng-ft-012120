@@ -9,32 +9,35 @@ class Song
   def save
     self.class.all << self
   end
-  def song.create
+  def Song.create
     song = self.new 
     song
   end
     
-  def song.new_by_name(name)
+  def Song.new_by_name(name)
     song = self.new 
     song.name = name
     song
   end
   
-  def song.create_by_name(name)
+  def Song.create_by_name(name)
     song = self.new 
     song.name = name
     @@all << song
     song
   end
   
-  def self.find_by_name(name)
+  def Song.find_by_name(name)
     @@all.find{|x| x.name == name}
   end
   
-  def song.find_or_create_by_name
+  def Song.find_or_create_by_name
     self.find_by_name(name) || self.create_by_name(name)
   end
   
-  def song.alphabetical
-    
+  def Song.alphabetical
+    @@all.sort_by{|x| x.name}
+  end
+  
+  def Song.new_from_filemane
     
